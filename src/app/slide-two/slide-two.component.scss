@@ -1,0 +1,43 @@
+@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin sizeWH($width, $height: $width){
+    width: $width;
+    height: $height;
+}
+
+.hide{display: none !important;}
+
+.grid{
+    @include sizeWH(100vw, 100%);
+    display: grid;
+    .frame{
+        display: flex;
+        .part{
+            @include sizeWH(40%, 80%);
+            margin: auto;
+            perspective: 600px;
+            .illustration{
+                @include sizeWH(100%);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url('/assets/Picture1.png');
+                // clip-path: polygon(0% 0%, 100% 30%, 100% 85%, 0% 100%);
+            }
+            .illustration.right{
+                transform: rotateY(20deg);
+                box-shadow: -4px 2px 5px rgba(15, 15, 15, 0.5);
+            }
+            .illustration.left{
+                transform: rotateY(-20deg);
+                box-shadow: 4px 2px 5px rgba(15, 15, 15, 0.5);
+            }
+            .p{}
+        }
+    }
+}

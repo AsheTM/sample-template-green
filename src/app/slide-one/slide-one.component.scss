@@ -1,0 +1,73 @@
+@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin sizeWH($width, $height: $width){
+    width: $width;
+    height: $height;
+}
+
+.title{
+    display: block;
+    text-align: center;
+    margin: auto;
+    font-size: 64px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: white;
+    text-transform: uppercase;
+    mix-blend-mode: overlay;
+    .part1{margin-left: 0%;}
+    .part2{margin-left: 25%;}
+}
+.text{
+    display: inline-block;
+    margin: auto;
+    color: white;
+    .title{
+        margin: 5px auto;
+    }
+    // .line{mix-blend-mode: difference;}
+    .line{display: block;}
+    .line.bg{
+        background-size: cover;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        color: rgba(255, 255, 255, .1);
+    }
+    .line.bg-1{
+        -webkit-text-stroke: .5px white;
+        background-image: url('/assets/BG-1.jpg');
+    }
+    @for $i from 1 through 51{
+        .line.fs-#{$i + 20}{
+            font-size: $i + 20px;
+            // @if ($i >= 51 / 2) {
+            //     margin-top: 5px;
+            //     margin-bottom: 5px;
+            // }
+        }
+    }
+    .line.bold{font-weight: bold;}
+    .keyword{text-transform: uppercase;}
+}
+.img{
+    @include positionTRBL(absolute, 50vh, unset, unset, 20vw);
+    @include sizeWH(250px);
+    transform: translateY(-50%);
+    // margin: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    mix-blend-mode: overlay;
+}
+.img.img-1{background-image: url('/assets/round_plant.png');}
+.hrow{
+    @include positionTRBL(absolute, 50%, unset, unset, 50%);
+    @include sizeWH(60vw, 0px);
+    border: 1px solid white;
+    border-radius: 5px;
+}

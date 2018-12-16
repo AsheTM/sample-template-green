@@ -1,0 +1,61 @@
+@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin sizeWH($width, $height: $width){
+    width: $width;
+    height: $height;
+}
+
+.hide{display: none !important;}
+
+#Prez{
+    @include positionTRBL(fixed, 0, 0, unset, 0);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    // overflow-x: scroll;
+    .part{
+        @include sizeWH(100vw, 100%);
+        flex-grow: 1;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: filter .3s linear, background-position .3s ease-out;
+    }
+    .part.one{
+        @include positionTRBL(absolute, 0, unset, 0, 0vw);
+        background-image: url('/assets/BG.jpg');
+    }
+    .part.two{
+        @include positionTRBL(absolute, 0, unset, 0, 100vw);
+        background-color: #dbf0d1;
+    }
+    .part.three{
+        @include positionTRBL(absolute, 0, unset, 0, 200vw);
+    }
+    .part.four{
+        @include positionTRBL(absolute, 0, unset, 0, 300vw);
+        background-color: #dbf0d1;//#6aaf08;
+    }
+    .part.five{
+        @include positionTRBL(absolute, 0, unset, 0, 400vw);
+    }
+    .part.six{
+        @include positionTRBL(absolute, 0, unset, 0, 500vw);
+        background-color: #dbf0d1;//#6aaf08;
+    }
+    .part.container{
+        display: flex;
+        font-family: sans-serif;
+    }
+    .part.container.h{flex-direction: row;}
+    .part.container.v{flex-direction: column;}
+    .part.shadow{box-shadow: 0px -10px 25px inset rgba(25, 25, 25, .5);}
+}
+
+*{scroll-behavior: smooth;}

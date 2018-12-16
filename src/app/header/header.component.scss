@@ -1,0 +1,90 @@
+@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin sizeWH($width, $height: $width){
+    width: $width;
+    height: $height;
+}
+
+#Header{
+    @include positionTRBL(fixed, 0, 0, unset, 0);
+    display: flex;
+    height: 80px;
+    z-index: 15;
+    padding: 5px;
+    background: linear-gradient(180deg, rgba(25, 25, 25, 0.85) -80%, transparent 25%);
+    //linear-gradient(180deg, rgba(25, 25, 25, 0.85) -50%, transparent 85%);
+    .icon{
+        @include positionTRBL(relative, 25%);
+        @include sizeWH(auto, 40px);
+        display: inline-flex;
+        margin-left: 30px;
+        transform: scale(2);
+        mix-blend-mode: overlay;
+        img{
+            @include sizeWH(auto, inherit);
+            -webkit-user-drag: none;
+        }
+    }
+    .menu{
+        display: inline-flex;
+        max-width: 800px;
+        margin: auto 5% auto auto;
+        .btn{
+            @include positionTRBL(relative, 0px);
+            display: inline-block;
+            font-size: 14px;
+            font-family: sans-serif;
+            font-weight: lighter;
+            letter-spacing: 1px;
+            color: white;
+            opacity: .5;
+            padding: 5px 2.5px;
+            white-space: nowrap;
+            margin: auto 15px;
+            border-bottom: 1.5px solid transparent;
+            cursor: pointer;
+            user-select: none;
+            box-sizing: content-box;
+            .animate{
+                @include positionTRBL(absolute, unset, unset, -1.5px, 0);
+                @include sizeWH(0%, 0px);
+                display: inherit;
+                background: black;
+                border-bottom: 2px solid white;
+                transition: width 0.4s ease-in 0.125s;
+            }
+        }
+        .btn:hover{
+            opacity: .9;
+            color: white;
+            // color: #6aaf08;
+            .animate{
+                @include sizeWH(100%, 0px);
+            }
+        }
+        // .btn:after{
+        //     display: inline-block;
+        //     position: absolute;
+        //     top: 0;
+        //     bottom: 0;
+        //     right: 0;
+        //     width: 50%;
+        //     color: black;
+        // }
+        // .btn:hover:after{
+        //     display: inline-block;
+        //     position: absolute;
+        //     top: 0;
+        //     bottom: 0;
+        //     right: 0;
+        //     width: 100%;
+        //     background: black;
+        // }
+    }
+}
