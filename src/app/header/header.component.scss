@@ -68,23 +68,6 @@
                 @include sizeWH(100%, 0px);
             }
         }
-        // .btn:after{
-        //     display: inline-block;
-        //     position: absolute;
-        //     top: 0;
-        //     bottom: 0;
-        //     right: 0;
-        //     width: 50%;
-        //     color: black;
-        // }
-        // .btn:hover:after{
-        //     display: inline-block;
-        //     position: absolute;
-        //     top: 0;
-        //     bottom: 0;
-        //     right: 0;
-        //     width: 100%;
-        //     background: black;
-        // }
+        // .btn:hover ~ .btn, .btn:hover .btn{opacity: .1;}
     }
 }

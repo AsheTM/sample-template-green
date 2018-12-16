@@ -14,28 +14,29 @@
 .hide{display: none !important;}
 
 .grid{
-    @include sizeWH(100vw, 100%);
+    @include sizeWH(100vw, auto);
     display: grid;
     .frame{
         display: flex;
         .part{
             @include sizeWH(40%, 80%);
             margin: auto;
-            perspective: 600px;
+            // perspective: 600px;
             .illustration{
                 @include sizeWH(100%);
                 background-repeat: no-repeat;
-                background-size: cover;
-                background-image: url('/assets/Picture1.png');
+                background-size: contain;
                 // clip-path: polygon(0% 0%, 100% 30%, 100% 85%, 0% 100%);
             }
             .illustration.right{
-                transform: rotateY(20deg);
-                box-shadow: -4px 2px 5px rgba(15, 15, 15, 0.5);
+                background-image: url('/assets/Picture1.jpg');
+                // transform: rotateY(20deg);
+                // box-shadow: -4px 2px 5px rgba(15, 15, 15, 0.5);
             }
             .illustration.left{
-                transform: rotateY(-20deg);
-                box-shadow: 4px 2px 5px rgba(15, 15, 15, 0.5);
+                background-image: url('/assets/Picture2.jpg');
+                // transform: rotateY(-20deg);
+                // box-shadow: 4px 2px 5px rgba(15, 15, 15, 0.5);
             }
             .p{}
         }

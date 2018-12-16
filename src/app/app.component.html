@@ -1,10 +1,11 @@
 <router-outlet></router-outlet>
 <app-header></app-header>
+<div class="body"></div>
 <div id="Prez">
-    <app-slide-one id="SmartGreen" class="part container one shadow"></app-slide-one>
-    <app-slide-two id="Products" class="part container two"></app-slide-two>
-    <app-slide-three id="Promises" class="part container three shadow"></app-slide-three>
-    <app-slide-four id="Newsletter" class="part container four"></app-slide-four>
-    <app-slide-five id="WhoWeAre" class="part container five"></app-slide-five>
-    <app-slide-six id="About" class="part container six"></app-slide-six>
+    <app-slide-one id="SmartGreen" class="part container one shadow" [ngClass]="{'passed': slides.slides.one==-1, 'focus': slides.slides.one==0, 'waiting': slides.slides.one==1}"></app-slide-one>
+    <app-slide-two id="Products" class="part container two" [ngClass]="{'passed': slides.slides.two==-1, 'focus': slides.slides.two==0, 'waiting': slides.slides.two==1}"></app-slide-two>
+    <app-slide-three id="Promises" class="part container three" [ngClass]="{'passed': slides.slides.three==-1, 'focus': slides.slides.three==0, 'waiting': slides.slides.three==1}"></app-slide-three>
+    <app-slide-four id="Newsletter" class="part container four" [ngClass]="{'passed': slides.slides.four==-1, 'focus': slides.slides.four==0, 'waiting': slides.slides.four==1}"></app-slide-four>
+    <app-slide-five id="WhoWeAre" class="part container five" [ngClass]="{'passed': slides.slides.five==-1, 'focus': slides.slides.five==0, 'waiting': slides.slides.five==1}"></app-slide-five>
+    <app-slide-six id="About" class="part container six" [ngClass]="{'passed': slides.slides.six==-1, 'focus': slides.slides.six==0, 'waiting': slides.slides.six==1}"></app-slide-six>
 </div>

@@ -14,7 +14,7 @@
 .hide{display: none !important;}
 
 .card{
-    @include sizeWH(20%, 40%);
+    @include sizeWH(20%, 60%);
     overflow: hidden;
     display: inline-flex;
     flex-direction: row;
@@ -23,8 +23,8 @@
     box-shadow: 0px 1px 5px black;
     transition: box-shadow .25s linear;
     background-color: white;
-    min-width: 200px;
-    max-width: 500px;
+    min-width: 300px;
+    max-width: 400px;
     .block{
         @include sizeWH(auto, 200%);
         display: flex;
