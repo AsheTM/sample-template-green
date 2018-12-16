@@ -37,40 +37,41 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-color: transparent;
+        padding: 15px 25px;
+        margin: 0px auto;
     }
     .part.one{
         @include sizeWH(100vw, 100vh);
-        // background-image: url('/assets/BG.jpg');
+        padding: 0px;
         // box-shadow: 0px -10px 25px inset rgba(25, 25, 25, .5);
     }
     .part.two{
-        @include sizeWH(80vw, 50%);
+        @include sizeWH(100%, 50%);
         margin: 10px auto;
-        background-color: whitesmoke;
-        box-shadow: 0px 2px 15px black;
-        padding: 15px 25px;
+        background-color: transparent;
         // background-color: #dbf0d1;
     }
     .part.three{
-        @include sizeWH(80vw, 50%);
-        margin: 10px auto;
-        background-color: green;
-        box-shadow: 0px 2px 15px black;
-        padding: 15px 25px;
+        @include sizeWH(100vw, 50%);
+        background-color: whitesmoke;
+        box-shadow: 0px -5px 15px rgba(25, 25, 25, .5);
     }
     .part.four{
-        @include sizeWH(80vw, 400px);
-        background-color: #dbf0d1;//#6aaf08;
-        margin: 10px auto;
-        box-shadow: 0px 2px 15px black;
+        @include sizeWH(100vw, 50%);
+        background-image: url('/assets/Picture6.jpg');
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        // background-color: #dbf0d1;//#6aaf08;
         padding: 15px 25px;
+        box-shadow: 0px 2px 15px black;
     }
     .part.five{
-        @include sizeWH(80vw, 50%);
-        margin: 10px auto;
+        @include sizeWH(80vw, 400px);
         background-color: red;
-        box-shadow: 0px 2px 15px black;
         padding: 15px 25px;
+        margin: 10px auto;
+        box-shadow: 0px 2px 15px black;
     }
     .part.six{
         @include sizeWH(80vw, auto);
@@ -91,6 +92,10 @@
     .part.container.h{flex-direction: row;}
     .part.container.v{flex-direction: column;}
     // .part.shadow{box-shadow: 0px -10px 25px inset rgba(25, 25, 25, .5);}
+
+    @for $i from 1 through 10{
+        .z-#{$i + 1}{z-index: $i + 1;}
+    }
 }
 
 *{scroll-behavior: smooth;}

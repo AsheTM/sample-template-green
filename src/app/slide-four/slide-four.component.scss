@@ -13,109 +13,49 @@
 
 .hide{display: none !important;}
 
-.card{
-    @include sizeWH(20%, 60%);
-    overflow: hidden;
-    display: inline-flex;
-    flex-direction: row;
-    margin: auto;
-    border-radius: 15px;
-    box-shadow: 0px 1px 5px black;
-    transition: box-shadow .25s linear;
-    background-color: white;
-    min-width: 300px;
-    max-width: 400px;
-    .block{
-        @include sizeWH(auto, 200%);
+
+@supports(backdrop-filter: none){
+    .section{
+        @include positionTRBL(relative);
+        @include sizeWH(100%, auto);
         display: flex;
-        flex-direction: column;
-        margin: auto;
-        transition: height .5s ease-out 0.1s;
-        .face{
-            @include sizeWH(80%, 100%);
-            display: flex;
-            flex-direction: column;
-            margin: auto;
-            transition: all .25s linear;
-            .img{
-                @include sizeWH(80px);
-                margin: auto;
-                border-radius: 100%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                box-shadow: 1px 1px 15px inset black;
-            }
-            .img.me{background-image: url('/assets/me.jpg');}
+        .block{
+            @include sizeWH(500px, 300px);
+            margin: auto 50px;
+            padding: 25px;
+            backdrop-filter: blur(3px) brightness(1.2);
+            background-color: rgba(255, 255, 255, 0.5);
+            border-bottom: 15px solid white;
             .text{
-                @include sizeWH(auto, 70%);
-                display: flex;
-                flex-direction: column;
-                font-family: 'montserrat';
-                text-align: center;
-                margin: auto auto auto auto;// 5px auto auto auto
+                @include sizeWH(80%, 100%);
+                margin: auto;
+                font-family: 'Work Sans', sans-serif;
                 .title{
-                    margin: 5px auto 1px auto;
-                    font-size: 18px;
+                    color: rgb(50, 159, 11);
+                    font-size: 48px;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    margin: 8px 0 12px 10px;
+                    text-transform: uppercase;
                 }
                 .sub-title{
-                    margin: 1px auto 5px auto;
-                    font-size: 12px;
-                    color: rgb(75, 75, 75);
+                    font-size: 9px;
+                    font-weight: lighter;
+                    letter-spacing: 3px;
+                    border-bottom: .5px solid black;
+                    margin: 5px 0 8px 3px;
+                    display: inline-block;
+                    text-transform: uppercase;
                 }
-                .details{
-                    max-width: 100%;
-                    word-break: break-word;
-                    margin: auto;
-                    .detail{
-                        display: flex;
-                        flex-direction: row;
-                        font-size: 13px;
-                        .label{padding-right: 5px;}
-                        .value{
-                            flex-grow: 1;
-                            margin: auto;
-                        }
-                    }
-                }
-                .icons{
-                    @include sizeWH(80%, auto);
-                    display: flex;
-                    flex-direction: row;
-                    margin: auto;
-                    .icon{
-                        margin: auto;
-                        cursor: pointer;
-                        opacity: .5;
-                        transition: opacity .25s linear;
-                        img{
-                            @include sizeWH(45px);
-                            border-radius: 25%;
-                        }
-                    }
-                    .icon:hover{opacity: 1;}
+                .p{
+                    font-size: 22px;
+                    font-weight: 400;
+                    letter-spacing: 1.5px;
+                    color: rgb(95, 95, 95);
+                    max-width: 90%;
+                    .line{}
                 }
             }
         }
     }
 }
-.card:hover{
-    box-shadow: 0px 5px 15px black;
-    .block{
-        @include sizeWH(auto, 100%);
-        .face:first-child{
-            @include sizeWH(80%, 0%);
-            opacity: 0;
-        }
-    }
-}
-
-// Une terre connectée est une réalité [SLOGAN]
-// Problem
-// Qui sommes nous? "Smart Green"
-// Solution: Présentation Produit
-// Nos Promesses! (Application Mobile)
-
-////////////////////// {Pour que vos plantes soccupent d'elle meme}
-
-// Newsletter
-// Contactez-nous!
