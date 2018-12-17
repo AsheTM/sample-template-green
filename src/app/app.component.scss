@@ -43,13 +43,11 @@
     .part.one{
         @include sizeWH(100vw, 100vh);
         padding: 0px;
-        // box-shadow: 0px -10px 25px inset rgba(25, 25, 25, .5);
     }
     .part.two{
         @include sizeWH(100%, 50%);
         margin: 10px auto;
         background-color: transparent;
-        // background-color: #dbf0d1;
     }
     .part.three{
         @include sizeWH(100vw, 50%);
@@ -62,36 +60,36 @@
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
-        // background-color: #dbf0d1;//#6aaf08;
         padding: 15px 25px;
         box-shadow: 0px 2px 15px black;
     }
     .part.five{
+        @include sizeWH(80vw, auto);
+        min-height: 200px;
+        margin: 0px auto;
+        padding: 15px 25px;
+    }
+    .part.six{
+        @include sizeWH(100vw, auto);
+        padding: 15px 35px;
+        margin: 10px auto;
+        background-color: whitesmoke;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+    }
+    .part.seven{
         @include sizeWH(80vw, 400px);
         background-color: red;
         padding: 15px 25px;
         margin: 10px auto;
         box-shadow: 0px 2px 15px black;
     }
-    .part.six{
-        @include sizeWH(80vw, auto);
-        min-height: 200px;
-        margin: 10px auto;
-        background-color: transparent;
-        padding: 15px 25px;
-        // background-color: #dbf0d1;//#6aaf08;
-    }
-    // .part.focus{left: 0vw !important;}
-    // .part.waiting{left: 100vw !important;}
-    // .part.passed{left: -100vw !important;}
-    // .part.waiting, .part.passed{opacity: 0;}
     .part.container{
         display: flex;
         font-family: sans-serif;
     }
     .part.container.h{flex-direction: row;}
     .part.container.v{flex-direction: column;}
-    // .part.shadow{box-shadow: 0px -10px 25px inset rgba(25, 25, 25, .5);}
 
     @for $i from 1 through 10{
         .z-#{$i + 1}{z-index: $i + 1;}

@@ -13,109 +13,68 @@
 
 .hide{display: none !important;}
 
-.card{
-    @include sizeWH(20%, 60%);
-    overflow: hidden;
-    display: inline-flex;
-    flex-direction: row;
-    margin: auto;
-    border-radius: 15px;
-    box-shadow: 0px 1px 5px black;
-    transition: box-shadow .25s linear;
-    background-color: white;
-    min-width: 300px;
-    max-width: 400px;
+.section{
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    margin: 15px 0;
     .block{
-        @include sizeWH(auto, 200%);
+        @include positionTRBL(relative);
+        @include sizeWH(40%, auto);
+        min-width: 250px;
+        max-width: 350px;
+        min-height: 150px;
         display: flex;
         flex-direction: column;
-        margin: auto;
-        transition: height .5s ease-out 0.1s;
-        .face{
-            @include sizeWH(80%, 100%);
-            display: flex;
-            flex-direction: column;
+        background-color: rgba(255, 255, 255, .5);
+        backdrop-filter: blur(3px);
+        padding: 25px;
+        transition: all .5s linear;
+        .title{
+            text-align: center;
+            color: white;
+            font-size: 36px;
             margin: auto;
-            transition: all .25s linear;
-            .img{
-                @include sizeWH(80px);
-                margin: auto;
-                border-radius: 100%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                box-shadow: 1px 1px 15px inset black;
-            }
-            .img.me{background-image: url('/assets/me.jpg');}
-            .text{
-                @include sizeWH(auto, 70%);
+            cursor: default;
+            user-select: none;
+            transition: all .5s linear;
+        }
+        .form{
+            margin: auto 5px;
+            .input{
                 display: flex;
-                flex-direction: column;
-                font-family: 'montserrat';
-                text-align: center;
-                margin: auto auto auto auto;// 5px auto auto auto
-                .title{
-                    margin: 5px auto 1px auto;
-                    font-size: 18px;
-                }
-                .sub-title{
-                    margin: 1px auto 5px auto;
-                    font-size: 12px;
-                    color: rgb(75, 75, 75);
-                }
-                .details{
-                    max-width: 100%;
-                    word-break: break-word;
-                    margin: auto;
-                    .detail{
-                        display: flex;
-                        flex-direction: row;
-                        font-size: 13px;
-                        .label{padding-right: 5px;}
-                        .value{
-                            flex-grow: 1;
-                            margin: auto;
-                        }
-                    }
-                }
-                .icons{
+                input{
                     @include sizeWH(80%, auto);
-                    display: flex;
-                    flex-direction: row;
-                    margin: auto;
-                    .icon{
-                        margin: auto;
-                        cursor: pointer;
-                        opacity: .5;
-                        transition: opacity .25s linear;
-                        img{
-                            @include sizeWH(45px);
-                            border-radius: 25%;
-                        }
-                    }
-                    .icon:hover{opacity: 1;}
+                    border: none;
+                    border-bottom: 1px solid white;
+                    color: white;
+                    background-color: rgba(255, 255, 255, .5);
+                    text-align: center;
+                    padding: 5px 0;
+                    margin: 5px auto;
+                }
+                textarea{}
+                input:not(:placeholder-shown){
+                    color: rgb(50, 159, 11) !important;
+                    background-color: rgba(255, 255, 255, .85);
+                }
+                input::placeholder{
+                    color: rgb(50, 159, 11);
                 }
             }
         }
     }
-}
-.card:hover{
-    box-shadow: 0px 5px 15px black;
-    .block{
-        @include sizeWH(auto, 100%);
-        .face:first-child{
-            @include sizeWH(80%, 0%);
-            opacity: 0;
-        }
+    .block.right{
+        border-top: 5px solid whitesmoke;
+        margin: auto -5px auto auto;
+    }
+    .block.left{
+        border-bottom: 5px solid whitesmoke;
+        margin: auto auto auto -5px;
+    }
+    .block:hover{
+        background-color: rgba(255, 255, 255, .8);
+        box-shadow: 0px 3px 8px rgba(75, 75, 75, .5);
+        *{color: rgb(50, 159, 11) !important;}
     }
 }
-
-// Une terre connectée est une réalité [SLOGAN]
-// Problem
-// Qui sommes nous? "Smart Green"
-// Solution: Présentation Produit
-// Nos Promesses! (Application Mobile)
-
-////////////////////// {Pour que vos plantes soccupent d'elle meme}
-
-// Newsletter
-// Contactez-nous!
