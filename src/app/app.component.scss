@@ -64,15 +64,15 @@
         box-shadow: 0px 2px 15px black;
     }
     .part.five{
-        @include sizeWH(80vw, auto);
+        @include sizeWH(100vw, auto);
         min-height: 200px;
+        padding: 0px;
         margin: 0px auto;
-        padding: 15px 25px;
     }
     .part.six{
         @include sizeWH(100vw, auto);
         padding: 15px 35px;
-        margin: 10px auto;
+        margin: 0px auto;
         background-color: whitesmoke;
         box-sizing: border-box;
         flex-wrap: wrap;
