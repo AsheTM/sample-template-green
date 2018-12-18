@@ -14,7 +14,7 @@
 .hide{display: none !important;}
 
 
-@supports(backdrop-filter: none){
+// @supports(backdrop-filter: none){
     .section{
         @include positionTRBL(relative);
         @include sizeWH(100%, auto);
@@ -58,4 +58,4 @@
             }
         }
     }
-}
+// }
