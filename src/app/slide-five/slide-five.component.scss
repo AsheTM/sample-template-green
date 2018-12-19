@@ -16,9 +16,10 @@
 .section{
     @include sizeWH(100%, auto);
     display: flex;
+    flex-direction: column;
     .text{
         @include sizeWH(50%, auto);
-        margin: 50px auto;
+        margin: 15px auto;
         font-family: 'Work Sans', sans-serif;
         .title{
             color: rgb(50, 159, 11);
@@ -42,10 +43,32 @@
             font-weight: 400;
             letter-spacing: 1.5px;
             color: rgb(95, 95, 95);
-            max-width: 90%;
             .line{
                 line-height: 28px;
                 margin: 10px 0;
+            }
+        }
+    }
+    .text.expended{
+        @include sizeWH(80%, auto);
+        .p.flex{
+            @include sizeWH(auto);
+            display: flex;
+            flex-direction: row;
+            margin: auto -10%;
+            .col{
+                @include positionTRBL(relative, unset, unset, unset, 10px);
+                flex-grow: 1;
+                flex-wrap: wrap;
+                margin: auto 5%;
+                .name{
+                    @include positionTRBL(absolute, 0, unset, 0, -10px);
+                    // @include sizeWH(auto, 20px);
+                    transform: rotateZ(-90deg);
+                    font-size: 18px;
+                    font-weight: bolder;
+                    // border-bottom: 3px solid rgb(95, 95, 95);
+                }
             }
         }
     }
