@@ -24,6 +24,7 @@
         display: flex;
         flex-direction: column;
         flex-grow: 3;
+        flex-wrap: wrap;
         background-repeat: no-repeat;
         background-size: auto 100%;
         background-position: center;
@@ -37,6 +38,17 @@
             background-color: rgba(75, 75, 75, .45);
             transition: inherit;
             cursor: pointer;
+            .name{
+                @include positionTRBL(absolute, unset, unset, 5%, 5%);
+                @include sizeWH(30%, auto);
+                display: inline-block;
+                font-size: 26px;
+                font-family: 'montserrat';
+                font-weight: lighter;
+                padding: 12px 60px 12px 8px;
+                border-bottom: .5px solid black;
+                transition: all .35s ease-out;
+            }
         }
         .title{
             @include positionTRBL(absolute, 30%, unset, unset, 15%);
@@ -62,10 +74,11 @@
                 padding: 30px 40px;
                 transition: all .35s ease-out;
                 .line{
-                    font-size: 18px;
+                    font-size: 16px;
                     font-family: 'montserrat';
                     font-weight: 500;
                     color: white;
+                    margin: 5px auto;
                 }
             }
         }
@@ -75,11 +88,14 @@
     .frame:hover{
         flex-grow: 5;
         background-size: auto 140%;
-        .layer{background-color: rgba(75, 75, 75, .05);}
+        .layer{
+            background-color: rgba(75, 75, 75, .05);
+            .name{@include sizeWH(50%, auto);}
+        }
         .title{
             @include positionTRBL(absolute, 5%, unset, unset, 5%);
             font-size: 26px;
-            border-bottom: 2px solid black;
+            // border-bottom: 2px solid black;
         }
         .title:after{content: '!!';}
         .text{
