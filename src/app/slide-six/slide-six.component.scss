@@ -1,4 +1,4 @@
-@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+@mixin positionTRBL($position: relative, $top: unset, $right: unset, $bottom: unset, $left: unset){
     position: $position;
     top: $top;
     right: $right;
@@ -13,111 +13,81 @@
 
 .hide{display: none !important;}
 
-.card{
-    @include sizeWH(20%, auto);
-    overflow: hidden;
-    display: inline-flex;
+.section{
+    @include positionTRBL();
+    @include sizeWH(100%, auto);
+    display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
-    flex-basis: 400px;
-    margin: 15px auto;
-    border-radius: 15px;
-    box-shadow: 0px 1px 5px black;
-    transition: box-shadow .25s linear;
-    background-color: white;
-    min-width: 300px;
-    max-width: 400px;
-    .block{
-        @include sizeWH(auto, 200%);
+    .frame{
+        @include positionTRBL();
+        min-height: 300px;
         display: flex;
         flex-direction: column;
-        margin: auto;
-        transition: height .5s ease-out 0.1s;
-        .face{
-            @include sizeWH(80%, 100%);
-            display: flex;
-            flex-direction: column;
+        flex-grow: 3;
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+        box-sizing: border-box;
+        padding: 15px;
+        user-select: none;
+        transition: all .35s ease-out;
+        .layer{
+            @include positionTRBL(absolute, 0, 0, 0, 0);
+            @include sizeWH(100%);
+            background-color: rgba(75, 75, 75, .45);
+            transition: inherit;
+            cursor: pointer;
+        }
+        .title{
+            @include positionTRBL(absolute, 30%, unset, unset, 15%);
+            font-size: 48px;
+            font-family: 'montserrat';
+            font-weight: lighter;
+            padding-bottom: 4px;
+            transition: all .35s ease-out;
+            cursor: pointer;
+        }
+        .title:after{content: '?';}
+        .text{
+            @include sizeWH(50%, auto);
+            min-width: 250px;
+            max-width: 350px;
             margin: auto;
-            transition: all .25s linear;
-            .img{
-                @include sizeWH(80px);
-                margin: auto;
-                border-radius: 100%;
-                background-repeat: no-repeat;
-                background-size: cover;
-                box-shadow: 1px 1px 15px inset black;
-            }
-            .img.me{background-image: url('/assets/me.jpg');}
-            .text{
-                @include sizeWH(auto, 70%);
+            .p{
                 display: flex;
                 flex-direction: column;
-                font-family: 'montserrat';
-                text-align: center;
-                margin: auto auto auto auto;// 5px auto auto auto
-                .title{
-                    margin: 5px auto 1px auto;
+                opacity: 0;
+                background-color: rgba(40, 209, 34, 1);
+                backdrop-filter: blur(0px);
+                padding: 30px 40px;
+                transition: all .35s ease-out;
+                .line{
                     font-size: 18px;
-                }
-                .sub-title{
-                    margin: 1px auto 5px auto;
-                    font-size: 12px;
-                    color: rgb(75, 75, 75);
-                }
-                .details{
-                    max-width: 100%;
-                    word-break: break-word;
-                    margin: auto;
-                    .detail{
-                        display: flex;
-                        flex-direction: row;
-                        font-size: 13px;
-                        .label{padding-right: 5px;}
-                        .value{
-                            flex-grow: 1;
-                            margin: auto;
-                        }
-                    }
-                }
-                .icons{
-                    @include sizeWH(80%, auto);
-                    display: flex;
-                    flex-direction: row;
-                    margin: auto;
-                    .icon{
-                        margin: auto;
-                        cursor: pointer;
-                        opacity: .5;
-                        transition: opacity .25s linear;
-                        img{
-                            @include sizeWH(45px);
-                            border-radius: 25%;
-                        }
-                    }
-                    .icon:hover{opacity: 1;}
+                    font-family: 'montserrat';
+                    font-weight: 500;
+                    color: white;
                 }
             }
         }
     }
-}
-.card:hover{
-    box-shadow: 0px 5px 15px black;
-    .block{
-        @include sizeWH(auto, 100%);
-        .face:first-child{
-            @include sizeWH(80%, 0%);
-            opacity: 0;
+    .frame.product1{background-image: url('/assets/product1.jpg');}
+    .frame.product2{background-image: url('/assets/product2.jpg');}
+    .frame:hover{
+        flex-grow: 5;
+        background-size: auto 140%;
+        .layer{background-color: rgba(75, 75, 75, .05);}
+        .title{
+            @include positionTRBL(absolute, 5%, unset, unset, 5%);
+            font-size: 26px;
+            border-bottom: 2px solid black;
+        }
+        .title:after{content: '!!';}
+        .text{
+            .p{
+                opacity: 1;
+                backdrop-filter: blur(3px);
+                .line{}
+            }
         }
     }
 }
-
-// Une terre connectée est une réalité [SLOGAN]
-// Problem
-// Qui sommes nous? "Smart Green"
-// Solution: Présentation Produit
-// Nos Promesses! (Application Mobile)
-
-////////////////////// {Pour que vos plantes soccupent d'elle meme}
-
-// Newsletter
-// Contactez-nous!

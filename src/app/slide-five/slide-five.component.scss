@@ -1,4 +1,4 @@
-@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+@mixin positionTRBL($position: relative, $top: unset, $right: unset, $bottom: unset, $left: unset){
     position: $position;
     top: $top;
     right: $right;
@@ -14,67 +14,39 @@
 .hide{display: none !important;}
 
 .section{
+    @include sizeWH(100%, auto);
     display: flex;
-    flex-grow: 1;
-    flex-wrap: wrap;
-    margin: 15px 0;
-    .block{
-        @include positionTRBL(relative);
-        @include sizeWH(40%, auto);
-        min-width: 250px;
-        max-width: 350px;
-        min-height: 150px;
-        display: flex;
-        flex-direction: column;
-        background-color: rgba(255, 255, 255, .5);
-        backdrop-filter: blur(3px);
-        padding: 25px;
-        transition: all .5s linear;
+    .text{
+        @include sizeWH(50%, auto);
+        margin: 50px auto;
+        font-family: 'Work Sans', sans-serif;
         .title{
-            text-align: center;
-            color: white;
-            font-size: 36px;
-            margin: auto;
-            cursor: default;
-            user-select: none;
-            transition: all .5s linear;
+            color: rgb(50, 159, 11);
+            font-size: 48px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin: 8px 0 12px 10px;
+            text-transform: uppercase;
         }
-        .form{
-            margin: auto 5px;
-            .input{
-                display: flex;
-                input{
-                    @include sizeWH(80%, auto);
-                    border: none;
-                    border-bottom: 1px solid white;
-                    color: white;
-                    background-color: rgba(255, 255, 255, .5);
-                    text-align: center;
-                    padding: 5px 0;
-                    margin: 5px auto;
-                }
-                textarea{}
-                input:not(:placeholder-shown){
-                    color: rgb(50, 159, 11) !important;
-                    background-color: rgba(255, 255, 255, .85);
-                }
-                input::placeholder{
-                    color: rgb(50, 159, 11);
-                }
+        .sub-title{
+            font-size: 9px;
+            font-weight: lighter;
+            letter-spacing: 3px;
+            border-bottom: .5px solid black;
+            margin: 5px 0 8px 3px;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+        .p{
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            color: rgb(95, 95, 95);
+            max-width: 90%;
+            .line{
+                line-height: 28px;
+                margin: 10px 0;
             }
         }
-    }
-    .block.right{
-        border-top: 5px solid whitesmoke;
-        margin: auto -5px auto auto;
-    }
-    .block.left{
-        border-bottom: 5px solid whitesmoke;
-        margin: auto auto auto -5px;
-    }
-    .block:hover{
-        background-color: rgba(255, 255, 255, .8);
-        box-shadow: 0px 3px 8px rgba(75, 75, 75, .5);
-        *{color: rgb(50, 159, 11) !important;}
     }
 }

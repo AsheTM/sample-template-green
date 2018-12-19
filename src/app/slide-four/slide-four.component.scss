@@ -13,8 +13,7 @@
 
 .hide{display: none !important;}
 
-
-@supports(backdrop-filter: none){
+// @supports(backdrop-filter: none){
     .section{
         @include positionTRBL(relative);
         @include sizeWH(100%, auto);
@@ -48,14 +47,14 @@
                     text-transform: uppercase;
                 }
                 .p{
-                    font-size: 22px;
+                    font-size: 16px;
                     font-weight: 400;
                     letter-spacing: 1.5px;
                     color: rgb(95, 95, 95);
                     max-width: 90%;
-                    .line{}
+                    .line{margin: 10px 0;}
                 }
             }
         }
     }
-}
+// }

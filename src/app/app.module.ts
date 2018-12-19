@@ -11,6 +11,9 @@ import { SlideFourComponent } from './slide-four/slide-four.component';
 import { SlideFiveComponent } from './slide-five/slide-five.component';
 import { SlideSixComponent } from './slide-six/slide-six.component';
 import { SlideSevenComponent } from './slide-seven/slide-seven.component';
+import { SlideEightComponent } from './slide-eight/slide-eight.component';
+import { SlideNineComponent } from './slide-nine/slide-nine.component';
+import { SlideTenComponent } from './slide-ten/slide-ten.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { SlideSevenComponent } from './slide-seven/slide-seven.component';
     SlideFourComponent,
     SlideFiveComponent,
     SlideSixComponent,
-    SlideSevenComponent
+    SlideSevenComponent,
+    SlideEightComponent,
+    SlideNineComponent,
+    SlideTenComponent
   ],
   imports: [
     BrowserModule,
