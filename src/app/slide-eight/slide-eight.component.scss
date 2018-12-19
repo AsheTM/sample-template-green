@@ -48,6 +48,10 @@
                 box-shadow: 1px 1px 15px inset black;
             }
             .img.me{background-image: url('/assets/me.jpg');}
+            .img.img1{background-image: url('/assets/person1.jpg');}
+            .img.img2{background-image: url('/assets/person2.jpg');}
+            .img.img3{background-image: url('/assets/person3.jpg');}
+            .img.img4{background-image: url('/assets/person4.jpg');}
             .text{
                 @include sizeWH(auto, 70%);
                 display: flex;
@@ -121,3 +125,4 @@
 
 // Newsletter
 // Contactez-nous!
+

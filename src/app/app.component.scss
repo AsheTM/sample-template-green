@@ -85,22 +85,35 @@
         margin: 0px auto;
     }
     .part.seven{
-        @include sizeWH(80vw, 400px);
-        background-color: red;
-        padding: 15px 25px;
-        margin: 10px auto;
-        box-shadow: 0px 2px 15px black;
+        @include sizeWH(100%, auto);
+        background-color: whitesmoke;
+        padding: 0;
+        margin: 0 auto;
     }
     .part.eight{
         @include sizeWH(100vw, auto);
         padding: 15px 10vw;
-        margin: 10px auto;
+        margin: 0px auto;
         background-color: whitesmoke;
         box-sizing: border-box;
         flex-wrap: wrap;
     }
-    .part.nine{}
-    .part.ten{}
+    .part.nine{
+        @include sizeWH(100vw, auto);
+        flex-direction: column;
+        padding: 0;
+        margin: 0px auto;
+        min-height: 300px;
+    }
+    .part.ten{
+        @include sizeWH(100vw, auto);
+        min-height: 150px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-image: url('/assets/footer.jpg');
+        border-top: 12px solid whitesmoke;
+    }
 
     @for $i from 1 through 10{
         .z-#{$i + 1}{z-index: $i + 1;}

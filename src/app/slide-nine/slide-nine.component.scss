@@ -14,10 +14,61 @@
 .hide{display: none !important;}
 
 .section{
+    @include sizeWH(100%, 300px);
+    min-height: 300px;
     display: flex;
-    flex-grow: 1;
+    flex-flow: row;
     flex-wrap: wrap;
-    margin: 15px 0;
+    background-color: whitesmoke;
+    .frame{
+        display: flex;
+        flex-grow: 8;
+        .text{
+            @include sizeWH(auto, 100%);
+            display: inline-flex;
+            margin: auto;
+            font-family: 'Work Sans', sans-serif;
+            .p{
+                line-height: 20px;
+                font-size: 16px;
+                font-weight: 400;
+                text-align: center;
+                letter-spacing: 1.5px;
+                color: rgb(95, 95, 95);
+                margin: auto;
+                max-width: 80%;
+                .line{
+                    margin: 15px 0;
+                    a.btn{
+                        @include sizeWH(80%, auto);
+                        display: inline-block;
+                        padding: 12px 25px;
+                        margin: 5px;
+                        color: white;
+                        background-color: rgb(50, 159, 11);
+                        border-radius: 4px;
+                        cursor: pointer;
+                        user-select: none;
+                        text-decoration: none;
+                        transition: all .175s ease-out;
+                    }
+                    a.btn:hover{
+                        transform: scale(1.01);
+                        box-shadow: 0px 3px 15px rgba(75, 75, 75, .5);
+                    }
+                }
+            }
+        }
+    }
+    .frame.frame-3-4{flex-grow: 6;}
+    .frame.frame-1-4{flex-grow: 2;}
+    .frame.bg{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+    }
+    .frame.frame-3-4.bg.bg1{background-image: url('/assets/Ending1.jpg');}
+    .frame.frame-3-4.bg.bg2{background-image: url('/assets/Ending2.jpg');}
     .block{
         @include positionTRBL(relative);
         @include sizeWH(40%, auto);
@@ -25,10 +76,12 @@
         max-width: 350px;
         min-height: 150px;
         display: flex;
+        margin: auto;
         flex-direction: column;
         background-color: rgba(255, 255, 255, .5);
         backdrop-filter: blur(3px);
         padding: 25px;
+        border-bottom: 12px solid white;
         transition: all .5s linear;
         .title{
             text-align: center;
@@ -53,28 +106,17 @@
                     padding: 5px 0;
                     margin: 5px auto;
                 }
-                textarea{}
                 input:not(:placeholder-shown){
                     color: rgb(50, 159, 11) !important;
                     background-color: rgba(255, 255, 255, .85);
                 }
-                input::placeholder{
-                    color: rgb(50, 159, 11);
-                }
+                input::placeholder{color: rgb(50, 159, 11);}
             }
         }
     }
-    .block.right{
-        border-top: 5px solid whitesmoke;
-        margin: auto -5px auto auto;
-    }
-    .block.left{
-        border-bottom: 5px solid whitesmoke;
-        margin: auto auto auto -5px;
-    }
-    .block:hover{
+    /*.block:hover{
         background-color: rgba(255, 255, 255, .8);
         box-shadow: 0px 3px 8px rgba(75, 75, 75, .5);
         *{color: rgb(50, 159, 11) !important;}
-    }
+    }*/
 }
