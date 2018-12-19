@@ -1,4 +1,4 @@
-@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+@mixin positionTRBL($position: relative, $top: unset, $right: unset, $bottom: unset, $left: unset){
     position: $position;
     top: $top;
     right: $right;
@@ -29,7 +29,7 @@
     flex-direction: column;
     overflow-x: hidden;
     .part{
-        @include positionTRBL(relative);
+        @include positionTRBL();
         @include sizeWH(100vw, 100%);
         min-height: 400px;
         flex-grow: 1;
@@ -40,17 +40,25 @@
         padding: 15px 25px;
         margin: 0px auto;
     }
+    
+    .part.container{
+        display: flex;
+        font-family: sans-serif;
+    }
+    .part.container.h{flex-direction: row;}
+    .part.container.v{flex-direction: column;}
+
     .part.one{
         @include sizeWH(100vw, 100vh);
         padding: 0px;
     }
     .part.two{
-        @include sizeWH(100%, 50%);
+        @include sizeWH(100%, auto);
         margin: 10px auto;
         background-color: transparent;
     }
     .part.three{
-        @include sizeWH(100vw, 50%);
+        @include sizeWH(100vw, auto);
         background-color: whitesmoke;
         box-shadow: 0px -5px 15px rgba(25, 25, 25, .5);
     }
@@ -64,18 +72,17 @@
         box-shadow: 0px 2px 15px black;
     }
     .part.five{
-        @include sizeWH(80vw, auto);
-        min-height: 200px;
+        @include sizeWH(100vw, auto);
+        min-height: auto;
+        background-color: whitesmoke;
+        padding: 0;
         margin: 0px auto;
-        padding: 15px 25px;
     }
     .part.six{
         @include sizeWH(100vw, auto);
-        padding: 15px 35px;
-        margin: 10px auto;
-        background-color: whitesmoke;
-        box-sizing: border-box;
-        flex-wrap: wrap;
+        background-color: white;
+        padding: 0;
+        margin: 0px auto;
     }
     .part.seven{
         @include sizeWH(80vw, 400px);
@@ -84,12 +91,16 @@
         margin: 10px auto;
         box-shadow: 0px 2px 15px black;
     }
-    .part.container{
-        display: flex;
-        font-family: sans-serif;
+    .part.eight{
+        @include sizeWH(100vw, auto);
+        padding: 15px 10vw;
+        margin: 10px auto;
+        background-color: whitesmoke;
+        box-sizing: border-box;
+        flex-wrap: wrap;
     }
-    .part.container.h{flex-direction: row;}
-    .part.container.v{flex-direction: column;}
+    .part.nine{}
+    .part.ten{}
 
     @for $i from 1 through 10{
         .z-#{$i + 1}{z-index: $i + 1;}

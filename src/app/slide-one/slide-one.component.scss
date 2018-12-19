@@ -71,3 +71,16 @@
     border: 1px solid white;
     border-radius: 5px;
 }
+.banner{
+    @include positionTRBL(absolute, unset, unset, 5vh, 0%);
+    @include sizeWH(60vw, 15vh);
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, .3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
