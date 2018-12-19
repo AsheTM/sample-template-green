@@ -35,7 +35,7 @@
         display: inline-flex;
         max-width: 800px;
         margin: auto 2% auto auto;
-        .btn{
+        a.btn{
             @include positionTRBL(relative, 0px);
             display: inline-block;
             font-size: 12px;
@@ -51,6 +51,8 @@
             cursor: pointer;
             user-select: none;
             box-sizing: content-box;
+            text-decoration: none;
+            scroll-behavior: smooth;
             .animate{
                 @include positionTRBL(absolute, unset, unset, -1.5px, 0);
                 @include sizeWH(0%, 0px);
