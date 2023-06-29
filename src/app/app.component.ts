@@ -8,7 +8,7 @@ import { SlidesService } from './services/slides.service';
 })
 export class AppComponent {
 
-  title = 'prezDOHA';
+  title = 'sample-template-green';
 
   constructor(private slides: SlidesService){}
 }
