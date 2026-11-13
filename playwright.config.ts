@@ -20,7 +20,7 @@ export default defineConfig({
     command: 'npm run build && node server.js',
     url: `http://localhost:${port}`,
     env: { PORT: String(port) },
-    reuseExistingServer: !process.env['CI'],
+    reuseExistingServer: false,
     timeout: 120_000,
   },
 });
