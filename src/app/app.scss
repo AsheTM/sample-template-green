@@ -33,7 +33,7 @@
         @include sizeWH(100vw, 100%);
         min-height: 400px;
         flex-grow: 1;
-        background-position: center top;
+        background-position: 5% top;
         background-repeat: no-repeat;
         background-size: cover;
         background-color: transparent;
@@ -121,3 +121,13 @@
 }
 
 *{scroll-behavior: smooth;}
+@media (max-width: 768px) {
+    .body{
+        background-size: cover;
+        background-position: 5% top;
+    }
+    #Prez .part{
+        box-sizing: border-box;
+        scroll-margin-top: 120px;
+    }
+}

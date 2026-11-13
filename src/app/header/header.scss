@@ -73,3 +73,27 @@
         // .btn:hover ~ .btn, .btn:hover .btn{opacity: .1;}
     }
 }
+@media (max-width: 768px) {
+    #Header{
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 8px 0;
+        background: linear-gradient(180deg, rgba(25, 25, 25, .9) 0%, rgba(25, 25, 25, .55) 100%);
+        .icon{
+            position: static;
+            transform: none;
+            margin: 0 auto 4px;
+        }
+        .menu{
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
+            margin: 0 8px;
+            a.btn{
+                margin: 4px 6px;
+                opacity: .85;
+            }
+        }
+    }
+}

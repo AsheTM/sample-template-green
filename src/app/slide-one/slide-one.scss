@@ -84,3 +84,35 @@
     letter-spacing: 2px;
     font-weight: bold;
 }
+@media (max-width: 768px) {
+    :host{
+        flex-direction: column;
+        justify-content: center;
+    }
+    .title{
+        margin: 0 auto;
+        font-size: 40px;
+        letter-spacing: 2px;
+        .part2{margin-left: 15%;}
+    }
+    .text{
+        margin: 16px auto 0;
+        text-align: center;
+        .line.fs-40{font-size: 28px;}
+    }
+    .img{
+        @include sizeWH(200px);
+        left: 50%;
+        top: 45vh;
+        transform: translate(-50%, -50%);
+    }
+    .hrow{display: none;}
+    .banner{
+        @include sizeWH(100%, auto);
+        bottom: 4vh;
+        padding: 16px;
+        box-sizing: border-box;
+        font-size: 14px;
+        text-align: center;
+    }
+}

@@ -21,8 +21,7 @@ test('renders the header and all ten slides', async ({ page }) => {
   }
 });
 
-test('header links scroll to their section', async ({ page, isMobile }) => {
-  test.fixme(isMobile, 'Menu overflows off-screen on mobile: #20');
+test('header links scroll to their section', async ({ page }) => {
   const links = page.locator('app-header .menu a');
   const count = await links.count();
   expect(count).toBe(6);
@@ -54,4 +53,20 @@ test('loads every requested resource successfully', async ({ page }) => {
   }
   await page.waitForLoadState('networkidle');
   expect(failures).toEqual([]);
+});
+
+test('fits the viewport width', async ({ page, isMobile }) => {
+  await page.waitForLoadState('networkidle');
+  const { viewport, documentWidth, widestSlide } = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    widestSlide: Math.max(
+      ...Array.from(document.querySelectorAll('#Prez > .part')).map((el) => el.getBoundingClientRect().right),
+    ),
+  }));
+  expect(documentWidth).toBeLessThanOrEqual(viewport);
+  if (isMobile) {
+    // On small screens no slide content may be clipped at the right edge.
+    expect(widestSlide).toBeLessThanOrEqual(viewport + 1);
+  }
 });

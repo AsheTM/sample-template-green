@@ -121,3 +121,15 @@
         *{color: rgb(50, 159, 11) !important;}
     }*/
 }
+@media (max-width: 768px) {
+    .section{
+        @include sizeWH(100%, auto);
+        flex-direction: column;
+        flex-wrap: nowrap;
+        .frame{min-height: 260px;}
+        .block{
+            @include sizeWH(80%, auto);
+            min-width: 0;
+        }
+    }
+}
