@@ -107,3 +107,24 @@
         }
     }
 }
+@media (max-width: 768px) {
+    .section{
+        flex-direction: column;
+        .frame{
+            min-height: 420px;
+            .title{
+                top: 5%;
+                left: 5%;
+                font-size: 26px;
+            }
+            .text{
+                margin: 70px auto auto;
+                .p{
+                    opacity: 1;
+                    padding: 20px 24px;
+                    .line{font-size: 14px;}
+                }
+            }
+        }
+    }
+}

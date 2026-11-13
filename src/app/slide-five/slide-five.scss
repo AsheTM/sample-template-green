@@ -73,3 +73,26 @@
         }
     }
 }
+@media (max-width: 768px) {
+    .section{
+        .text{
+            @include sizeWH(90%, auto);
+            .title{font-size: 32px;}
+            .p{font-size: 14px;}
+        }
+        .text.expended .p.flex{
+            flex-direction: column;
+            margin: auto 0;
+            .col{
+                left: 0;
+                margin: 10px 0;
+                .name{
+                    position: static;
+                    display: block;
+                    transform: none;
+                    margin-bottom: 6px;
+                }
+            }
+        }
+    }
+}

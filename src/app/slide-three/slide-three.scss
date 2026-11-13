@@ -58,3 +58,18 @@
         }
     }
 }
+@media (max-width: 768px) {
+    .section{
+        flex-direction: column;
+        .illustration{
+            @include sizeWH(100%, 250px);
+            max-width: 350px;
+        }
+        .text{
+            @include sizeWH(100%, auto);
+            box-sizing: border-box;
+            .title{font-size: 32px;}
+            .p{font-size: 14px; max-width: 100%;}
+        }
+    }
+}

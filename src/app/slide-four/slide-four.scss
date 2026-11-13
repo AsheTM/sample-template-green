@@ -58,3 +58,16 @@
         }
     }
 // }
+@media (max-width: 768px) {
+    .section .block{
+        @include sizeWH(100%, auto);
+        margin: 16px auto;
+        padding: 16px;
+        box-sizing: border-box;
+        .text{
+            @include sizeWH(100%, auto);
+            .title{font-size: 32px;}
+            .p{font-size: 14px; max-width: 100%;}
+        }
+    }
+}

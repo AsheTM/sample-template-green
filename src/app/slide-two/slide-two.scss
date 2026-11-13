@@ -112,3 +112,37 @@
         }
     }
 }
+@media (max-width: 768px) {
+    .section{
+        display: flex;
+        flex-direction: column;
+        .illustration.right{
+            position: relative;
+            top: auto;
+            left: auto;
+            @include sizeWH(100%, auto);
+            min-width: 0;
+            max-width: none;
+            transform: none;
+            .text{
+                .title{font-size: 32px;}
+                .p{font-size: 14px; max-width: 100%;}
+            }
+        }
+        .illustration.left{
+            position: relative;
+            top: auto;
+            right: auto;
+            @include sizeWH(100%, 320px);
+            min-width: 0;
+            max-width: none;
+            margin-top: 16px;
+            box-sizing: border-box;
+            .img{
+                @include sizeWH(60%);
+                min-width: 0;
+                top: 50%;
+            }
+        }
+    }
+}

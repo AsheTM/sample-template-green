@@ -92,3 +92,19 @@
         .area.bg.bg2{background-image: url('/assets/promise2.webp');}
     }
 }
+@media (max-width: 768px) {
+    .section .block{
+        flex-direction: column;
+        flex-basis: auto;
+        .area:not(:only-child){
+            flex-basis: auto;
+            min-height: 160px;
+        }
+        .area .text .title{font-size: 32px;}
+        .area.bg .text .title{
+            @include sizeWH(100%, auto);
+            font-size: 26px;
+        }
+        .area .text .p{font-size: 14px;}
+    }
+}
