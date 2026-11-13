@@ -3,6 +3,12 @@
 All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.1.1] - 2026-11-13
+
+### Added
+
+- MIT license for the source code. Images in `public/assets` are excluded (#14).
+
 ## [1.1.0] - 2026-11-13
 
 Technical upgrade of the site. Content and desktop design are unchanged.
@@ -50,5 +56,6 @@ Technical upgrade of the site. Content and desktop design are unchanged.
 
 Initial version.
 
+[1.1.1]: https://github.com/AsheTM/sample-template-green/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/AsheTM/sample-template-green/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/AsheTM/sample-template-green/releases/tag/v1.0.0
