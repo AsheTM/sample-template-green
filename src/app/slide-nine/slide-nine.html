@@ -4,25 +4,37 @@
     <div class="frame frame-3-4 bg bg1">
         <div class="block">
             <div class="title">Newsletter</div>
-            <div class="form">
+            <form class="form" [formGroup]="newsletterForm" (ngSubmit)="submitNewsletter()" novalidate>
                 <div class="input">
-                    <input type="email" placeholder="E-mail"/>
+                    <label class="visually-hidden" for="newsletter-email">E-mail</label>
+                    <input id="newsletter-email" type="email" placeholder="E-mail" formControlName="email"
+                        autocomplete="email" [class.invalid]="isInvalid(newsletterForm.controls.email)"
+                        [attr.aria-invalid]="isInvalid(newsletterForm.controls.email)"/>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="block hide">
             <div class="title">Contactez nous</div>
-            <div class="form">
+            <form class="form" [formGroup]="contactForm" (ngSubmit)="submitContact()" novalidate>
                 <div class="input">
-                    <input type="text" placeholder="NOM Prénom"/>
+                    <label class="visually-hidden" for="contact-name">NOM Prénom</label>
+                    <input id="contact-name" type="text" placeholder="NOM Prénom" formControlName="name"
+                        autocomplete="name" [class.invalid]="isInvalid(contactForm.controls.name)"
+                        [attr.aria-invalid]="isInvalid(contactForm.controls.name)"/>
                 </div>
                 <div class="input">
-                    <input type="text" placeholder="E-mail"/>
+                    <label class="visually-hidden" for="contact-email">E-mail</label>
+                    <input id="contact-email" type="email" placeholder="E-mail" formControlName="email"
+                        autocomplete="email" [class.invalid]="isInvalid(contactForm.controls.email)"
+                        [attr.aria-invalid]="isInvalid(contactForm.controls.email)"/>
                 </div>
                 <div class="input">
-                    <textarea cols="30" rows="10"></textarea>
+                    <label class="visually-hidden" for="contact-message">Message</label>
+                    <textarea id="contact-message" cols="30" rows="10" formControlName="message"
+                        [class.invalid]="isInvalid(contactForm.controls.message)"
+                        [attr.aria-invalid]="isInvalid(contactForm.controls.message)"></textarea>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
     <div class="frame frame-1-4">
