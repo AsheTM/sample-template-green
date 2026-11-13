@@ -21,7 +21,7 @@
           <div class="icons">
             @for (social of socials; track social.name) {
               <div class="icon" [class]="social.name">
-                <img [src]="social.icon" [alt]="social.label" />
+                <img [src]="social.icon" [alt]="social.label" width="45" height="45" loading="lazy" decoding="async" />
               </div>
             }
           </div>

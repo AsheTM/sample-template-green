@@ -67,8 +67,8 @@
         background-size: cover;
         background-position: center center;
     }
-    .frame.frame-3-4.bg.bg1{background-image: url('/assets/Ending1.jpg');}
-    .frame.frame-3-4.bg.bg2{background-image: url('/assets/Ending2.jpg');}
+    .frame.frame-3-4.bg.bg1{background-image: url('/assets/Ending1.webp');}
+    .frame.frame-3-4.bg.bg2{background-image: url('/assets/Ending2.webp');}
     .block{
         @include positionTRBL(relative);
         @include sizeWH(40%, auto);

@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('renders the header and all ten slides', async ({ page }) => {
-  await expect(page.locator('app-header img[alt="Logo"]')).toBeVisible();
+  await expect(page.locator('app-header img[alt="Smart Green"]')).toBeVisible();
   await expect(page.locator('#Prez > .part')).toHaveCount(10);
   for (const id of sections) {
     await expect(page.locator(id)).toBeAttached();
@@ -33,4 +33,18 @@ test('shows a validation state for an invalid newsletter e-mail', async ({ page 
   await email.fill('not-an-email');
   await email.press('Enter');
   await expect(email).toHaveClass(/invalid/);
+});
+
+test('loads every requested resource successfully', async ({ page }) => {
+  const failures: string[] = [];
+  page.on('response', (response) => {
+    if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`);
+  });
+  page.on('requestfailed', (request) => failures.push(`failed ${request.url()}`));
+  await page.goto('/');
+  for (const section of await page.locator('#Prez > .part').all()) {
+    await section.scrollIntoViewIfNeeded();
+  }
+  await page.waitForLoadState('networkidle');
+  expect(failures).toEqual([]);
 });
