@@ -6,6 +6,13 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
+test('declares French content and page metadata', async ({ page }) => {
+  await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+  await expect(page).toHaveTitle(/Smart Green/);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /arrosage intelligent/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /Smart Green/);
+});
+
 test('renders the header and all ten slides', async ({ page }) => {
   await expect(page.locator('app-header img[alt="Smart Green"]')).toBeVisible();
   await expect(page.locator('#Prez > .part')).toHaveCount(10);
