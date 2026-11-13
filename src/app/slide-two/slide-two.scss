@@ -1,0 +1,148 @@
+@mixin positionTRBL($position, $top: unset, $right: unset, $bottom: unset, $left: unset){
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin sizeWH($width, $height: $width){
+    width: $width;
+    height: $height;
+}
+
+.hide{display: none !important;}
+
+.grid{
+    @include sizeWH(100vw, auto);
+    display: grid;
+    .frame{
+        display: flex;
+        .part{
+            @include sizeWH(40%, 80%);
+            margin: auto;
+            // perspective: 600px;
+            .illustration{
+                @include sizeWH(100%);
+                background-repeat: no-repeat;
+                background-size: contain;
+                // clip-path: polygon(0% 0%, 100% 30%, 100% 85%, 0% 100%);
+            }
+            .illustration.right{
+                background-image: url('/assets/Picture1.webp');
+                // transform: rotateY(20deg);
+                // box-shadow: -4px 2px 5px rgba(15, 15, 15, 0.5);
+            }
+            .illustration.left{
+                background-image: url('/assets/Picture2.webp');
+                // transform: rotateY(-20deg);
+                // box-shadow: 4px 2px 5px rgba(15, 15, 15, 0.5);
+            }
+            .p{}
+        }
+    }
+}
+
+.section{
+    @include positionTRBL(relative);
+    @include sizeWH(100%);
+    .bg{
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        background-color: rgba(245, 245, 245, .5);
+    }
+    .bg.border{border: 8px solid white;}
+    .bg.shadow{box-shadow: 0px 4px 15px black;}
+    .illustration.right{
+        @include positionTRBL(absolute, 0%, unset, unset, 15%);
+        @include sizeWH(50%, 300px);
+        min-width: 500px;
+        max-width: 600px;
+        display: flex;
+        transform: translateY(25%);
+        backdrop-filter: blur(8px);
+        // background-image: url('/assets/Picture5.webp');
+        .text{
+            @include sizeWH(90%);
+            padding: 5px;
+            margin: auto;
+            font-family: 'Work Sans', sans-serif;
+            .title{
+                color: rgb(50, 159, 11);
+                font-size: 48px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                margin: 8px 0 12px 10px;
+                text-transform: uppercase;
+            }
+            .sub-title{
+                font-size: 9px;
+                font-weight: lighter;
+                letter-spacing: 3px;
+                border-bottom: .5px solid black;
+                margin: 5px 0 8px 3px;
+                display: inline-block;
+                text-transform: uppercase;
+            }
+            .p{
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 1.5px;
+                color: rgb(95, 95, 95);
+                max-width: 90%;
+                .line{margin: 8px auto;}
+            }
+        }
+    }
+    .illustration.left{
+        @include positionTRBL(absolute, 0, -5%);
+        @include sizeWH(50%, 600px);
+        min-width: 500px;
+        max-width: 700px;
+        background-image: url('/assets/Picture3.webp');
+        .img{
+            @include positionTRBL(absolute, 40%, 50%);
+            @include sizeWH(50%);
+            min-width: 300px;
+            max-width: 500px;
+            transform:translateX(50%) translateY(-50%);
+            background-position: 70% center;
+            background-image: url('/assets/Picture4.webp');
+        }
+    }
+}
+@media (max-width: 768px) {
+    .section{
+        display: flex;
+        flex-direction: column;
+        .illustration.right{
+            position: relative;
+            top: auto;
+            left: auto;
+            @include sizeWH(100%, auto);
+            min-width: 0;
+            max-width: none;
+            transform: none;
+            .text{
+                .title{font-size: 32px;}
+                .p{font-size: 14px; max-width: 100%;}
+            }
+        }
+        .illustration.left{
+            position: relative;
+            top: auto;
+            right: auto;
+            @include sizeWH(100%, 320px);
+            min-width: 0;
+            max-width: none;
+            margin-top: 16px;
+            box-sizing: border-box;
+            .img{
+                @include sizeWH(60%);
+                min-width: 0;
+                top: 50%;
+            }
+        }
+    }
+}

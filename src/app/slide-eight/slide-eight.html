@@ -1,0 +1,32 @@
+@for (member of members; track $index) {
+  <div class="card card-2">
+    <div class="block">
+      <div class="face face-1">
+        <div class="img" [class]="member.photoClass"></div>
+      </div>
+      <div class="face face-2">
+        <div class="text">
+          <div class="title full-name">{{ member.fullName }}</div>
+          <div class="sub-title position">{{ member.position }}</div>
+          <div class="details">
+            <div class="detail">
+              <div class="label"></div>
+              <div class="value">{{ member.phone }}</div>
+            </div>
+            <div class="detail">
+              <div class="label"></div>
+              <div class="value">{{ member.email }}</div>
+            </div>
+          </div>
+          <div class="icons">
+            @for (social of socials; track social.name) {
+              <div class="icon" [class]="social.name">
+                <img [src]="social.icon" [alt]="social.label" width="45" height="45" loading="lazy" decoding="async" />
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

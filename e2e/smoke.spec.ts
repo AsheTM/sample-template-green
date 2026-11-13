@@ -1,0 +1,72 @@
+import { expect, test } from '@playwright/test';
+
+const sections = ['#Main', '#SmartGreen', '#Products', '#Promises', '#WhoWeAre', '#Newsletter', '#About'];
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('/');
+});
+
+test('declares French content and page metadata', async ({ page }) => {
+  await expect(page.locator('html')).toHaveAttribute('lang', 'fr');
+  await expect(page).toHaveTitle(/Smart Green/);
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /arrosage intelligent/);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /Smart Green/);
+});
+
+test('renders the header and all ten slides', async ({ page }) => {
+  await expect(page.locator('app-header img[alt="Smart Green"]')).toBeVisible();
+  await expect(page.locator('#Prez > .part')).toHaveCount(10);
+  for (const id of sections) {
+    await expect(page.locator(id)).toBeAttached();
+  }
+});
+
+test('header links scroll to their section', async ({ page }) => {
+  const links = page.locator('app-header .menu a');
+  const count = await links.count();
+  expect(count).toBe(6);
+  for (let i = 0; i < count; i++) {
+    const href = (await links.nth(i).getAttribute('href'))!;
+    await links.nth(i).click();
+    await expect(page).toHaveURL(new RegExp(`${href}$`));
+    await expect(page.locator(href)).toBeInViewport({ ratio: 0.1 });
+  }
+});
+
+test('shows a validation state for an invalid newsletter e-mail', async ({ page }) => {
+  const email = page.locator('#newsletter-email');
+  await email.scrollIntoViewIfNeeded();
+  await email.fill('not-an-email');
+  await email.press('Enter');
+  await expect(email).toHaveClass(/invalid/);
+});
+
+test('loads every requested resource successfully', async ({ page }) => {
+  const failures: string[] = [];
+  page.on('response', (response) => {
+    if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`);
+  });
+  page.on('requestfailed', (request) => failures.push(`failed ${request.url()}`));
+  await page.goto('/');
+  for (const section of await page.locator('#Prez > .part').all()) {
+    await section.scrollIntoViewIfNeeded();
+  }
+  await page.waitForLoadState('networkidle');
+  expect(failures).toEqual([]);
+});
+
+test('fits the viewport width', async ({ page, isMobile }) => {
+  await page.waitForLoadState('networkidle');
+  const { viewport, documentWidth, widestSlide } = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+    widestSlide: Math.max(
+      ...Array.from(document.querySelectorAll('#Prez > .part')).map((el) => el.getBoundingClientRect().right),
+    ),
+  }));
+  expect(documentWidth).toBeLessThanOrEqual(viewport);
+  if (isMobile) {
+    // On small screens no slide content may be clipped at the right edge.
+    expect(widestSlide).toBeLessThanOrEqual(viewport + 1);
+  }
+});
