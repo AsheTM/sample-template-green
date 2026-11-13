@@ -80,3 +80,13 @@ GitHub Actions (`.github/workflows/ci.yml`) runs on pushes and pull requests to 
 
 1. Lint, unit tests and production build
 2. Playwright end-to-end tests (report uploaded on failure)
+
+## License
+
+The source code is released under the [MIT License](LICENSE).
+
+The images in `public/assets` are not covered by this license:
+
+- `me.webp` is © Haitham DAWOUD, all rights reserved.
+- The Facebook, Twitter and Instagram icons are trademarks of their respective owners.
+- All other images belong to their respective owners.

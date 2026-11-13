@@ -1,6 +1,7 @@
 {
   "name": "sample-template-green",
   "version": "1.1.0",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
