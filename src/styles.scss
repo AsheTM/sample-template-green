@@ -1,4 +1,279 @@
-/* You can add global styles to this file, and also import other style files */
+// Smart Green design system ("Agritech clair").
+// Colours are tokens; components only use var(--…). Dark mode redefines them.
+
+:root {
+  color-scheme: light;
+
+  // Brand
+  --sg-forest: #1f3d2b;
+  --sg-leaf: #6aaf08;
+  --sg-water: #2b8fd6;
+  --sg-linen: #f7f5ef;
+
+  // Surfaces and text
+  --bg: var(--sg-linen);
+  --surface: #ffffff;
+  --surface-alt: #efebe0;
+  --surface-green: #e9efe3;
+  --field: #fbfaf6;
+  --text: var(--sg-forest);
+  --text-muted: #55655b;
+  --line: #e3dfd3;
+  --field-line: #cfc9b8;
+
+  // Accents (the *-text shades pass WCAG AA on --bg and --surface)
+  --accent: var(--sg-leaf);
+  --on-accent: #0f2418;
+  --green-text: #3f6b05;
+  --green-soft: #eaf3dc;
+  --blue: var(--sg-water);
+  --blue-text: #1b6aa8;
+  --blue-soft: #e3f0fa;
+  --sun-text: #8a5a00;
+  --sun-soft: #fdf1d8;
+  --danger: #b42318;
+
+  // Dark sections (kit, footer)
+  --dark: var(--sg-forest);
+  --dark-raised: #2a4f38;
+  --dark-sunken: #23452f;
+  --dark-line: #3a6149;
+  --on-dark: var(--sg-linen);
+  --on-dark-muted: #b9c8bd;
+  --on-dark-green: #8bcb2e;
+  --on-dark-blue: #6cb4ea;
+
+  --shadow: 0 20px 40px -16px rgb(31 61 43 / 35%);
+  --radius-sm: 14px;
+  --radius: 24px;
+  --radius-lg: 28px;
+  --font: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --header-height: 81px;
+}
+
+@mixin dark-tokens {
+  color-scheme: dark;
+  --bg: #0f1f16;
+  --surface: #17291e;
+  --surface-alt: #13241a;
+  --surface-green: #1a2e21;
+  --field: #0f1f16;
+  --text: #e8efe6;
+  --text-muted: #a9b8ad;
+  --line: #2a3f31;
+  --field-line: #3a5243;
+  --green-text: #8bcb2e;
+  --green-soft: #1f3a22;
+  --blue-text: #6cb4ea;
+  --blue-soft: #16324a;
+  --sun-text: #f2c46b;
+  --sun-soft: #3a2f16;
+  --danger: #ff8a7a;
+  --dark: #0b1810;
+  --dark-raised: #17291e;
+  --dark-sunken: #13241a;
+  --dark-line: #2a3f31;
+  --shadow: 0 20px 40px -16px rgb(0 0 0 / 60%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-tokens;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-tokens;
+}
+
+// Base
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Shared building blocks
+
+.container {
+  width: 100%;
+  max-width: 1248px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.section {
+  padding-block: clamp(72px, 9vw, 104px);
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+  margin-bottom: 48px;
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-text);
+
+  &--blue {
+    color: var(--blue-text);
+  }
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 46px);
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.lead {
+  color: var(--text-muted);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 26px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &--primary {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  &--secondary {
+    border-color: currentColor;
+    background: transparent;
+    color: var(--text);
+  }
+
+  &--small {
+    min-height: 44px;
+    padding: 0 20px;
+    font-size: 15px;
+  }
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.icon-tile {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+
+  &--green {
+    background: var(--green-soft);
+    color: var(--green-text);
+  }
+
+  &--blue {
+    background: var(--blue-soft);
+    color: var(--blue-text);
+  }
+
+  &--sun {
+    background: var(--sun-soft);
+    color: var(--sun-text);
+  }
+}
+
+.chip {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+}
 
 .visually-hidden {
   position: absolute !important;
