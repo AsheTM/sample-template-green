@@ -23,11 +23,11 @@ import { Reveal } from '../../shared/reveal/reveal';
         </div>
         <img
           class="photo"
-          ngSrc="/assets/Picture2.webp"
-          width="1000"
-          height="667"
+          ngSrc="/assets/watering-strawberries.webp"
+          width="1200"
+          height="800"
           sizes="(max-width: 960px) 100vw, 45vw"
-          alt="Un arrosoir verse de l'eau sur une jeune pousse"
+          alt="Un arrosoir en métal arrose des plants de fraisiers, avec un tuyau d'irrigation au fond"
         />
       </div>
     </section>

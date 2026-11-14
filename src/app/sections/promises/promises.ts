@@ -18,11 +18,11 @@ import { Reveal } from '../../shared/reveal/reveal';
         <img
           class="banner"
           appReveal
-          ngSrc="/assets/Picture6.webp"
-          width="1280"
-          height="765"
+          ngSrc="/assets/irrigated-field.webp"
+          width="1600"
+          height="900"
           sizes="100vw"
-          alt="Champ de maïs au coucher du soleil"
+          alt="Un champ cultivé arrosé par un système d'irrigation dans la lumière du matin"
         />
         <ul class="list">
           @for (item of promises; track item.title) {
