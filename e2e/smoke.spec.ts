@@ -96,12 +96,60 @@ test('shows validation errors in the contact form', async ({ page }) => {
   await expect(email).toHaveClass(/invalid/);
 });
 
+// Netlify Forms only exists once deployed: stand in for it.
+async function mockNetlifyForms(page: Page, status: number): Promise<URLSearchParams[]> {
+  const posts: URLSearchParams[] = [];
+  await page.route('/', async (route) => {
+    if (route.request().method() !== 'POST') return route.fallback();
+    posts.push(new URLSearchParams(route.request().postData() ?? ''));
+    await route.fulfill({ status, body: '' });
+  });
+  return posts;
+}
+
+test('sends the contact form to Netlify Forms', async ({ page }) => {
+  const posts = await mockNetlifyForms(page, 200);
+  await page.getByLabel('Nom et prénom').fill('Inès Moreau');
+  await page.getByLabel('E-mail', { exact: true }).fill('ines@example.com');
+  await page.getByLabel('Message').fill('Bonjour !');
+  await page.getByRole('button', { name: 'Envoyer le message' }).click();
+
+  await expect(page.getByText('Votre message a bien été envoyé.')).toBeVisible();
+  expect(posts).toHaveLength(1);
+  expect(Object.fromEntries(posts[0])).toEqual({
+    'form-name': 'contact',
+    name: 'Inès Moreau',
+    email: 'ines@example.com',
+    message: 'Bonjour !',
+    'bot-field': '',
+  });
+  await expect(page.getByLabel('Nom et prénom')).toHaveValue('');
+});
+
+test('reports a failed newsletter subscription', async ({ page }) => {
+  await mockNetlifyForms(page, 500);
+  await page.locator('#newsletter-email').fill('ines@example.com');
+  await page.getByRole('button', { name: "S'abonner" }).click();
+  await expect(page.getByText("L'inscription a échoué.")).toBeVisible();
+  await expect(page.locator('#newsletter-email')).toHaveValue('ines@example.com');
+});
+
+test('ships static form copies for Netlify detection', async ({ request }) => {
+  const html = await (await request.get('/')).text();
+  expect(html).toContain('<form name="contact" data-netlify="true"');
+  expect(html).toContain('<form name="newsletter" data-netlify="true"');
+});
+
 test('loads every requested resource successfully', async ({ page }) => {
   const failures: string[] = [];
   page.on('response', (response) => {
     if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`);
   });
-  page.on('requestfailed', (request) => failures.push(`failed ${request.url()}`));
+  page.on('requestfailed', (request) => {
+    // Requests from the beforeEach load are cancelled by the navigation below.
+    if (request.failure()?.errorText.includes('ERR_ABORTED')) return;
+    failures.push(`failed ${request.url()} ${request.failure()?.errorText}`);
+  });
   page.on('console', (message) => {
     if (message.type() === 'error') failures.push(`console ${message.text()}`);
   });

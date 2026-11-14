@@ -57,7 +57,32 @@
         }
       </div>
 
-      <button type="submit" class="btn btn--primary submit">Envoyer le message</button>
+      <div class="honeypot" aria-hidden="true">
+        <label for="contact-bot">Ne pas remplir</label>
+        <input
+          id="contact-bot"
+          type="text"
+          [formControlName]="honeypot"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="send">
+        <button type="submit" class="btn btn--primary" [disabled]="contactStatus() === 'sending'">
+          {{ contactStatus() === 'sending' ? 'Envoi…' : 'Envoyer le message' }}
+        </button>
+        <p class="status" role="status">
+          @switch (contactStatus()) {
+            @case ('sent') {
+              <span class="ok">Merci ! Votre message a bien été envoyé.</span>
+            }
+            @case ('error') {
+              <span class="ko">L'envoi a échoué. Réessayez dans un instant.</span>
+            }
+          }
+        </p>
+      </div>
     </form>
 
     <form
@@ -69,6 +94,17 @@
       <span class="mail-icon"><app-icon name="mail" [size]="26" [strokeWidth]="1.9" /></span>
       <h2 class="heading">Newsletter</h2>
       <p>Conseils d'arrosage et nouveautés Smart Green, directement dans votre boîte mail.</p>
+
+      <div class="honeypot" aria-hidden="true">
+        <label for="newsletter-bot">Ne pas remplir</label>
+        <input
+          id="newsletter-bot"
+          type="text"
+          [formControlName]="honeypot"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
 
       <div class="field subscribe">
         <label for="newsletter-email">Votre e-mail</label>
@@ -84,11 +120,27 @@
               isInvalid(newsletterForm.controls.email) ? 'newsletter-email-error' : null
             "
           />
-          <button type="submit" class="btn subscribe-btn">S'abonner</button>
+          <button
+            type="submit"
+            class="btn subscribe-btn"
+            [disabled]="newsletterStatus() === 'sending'"
+          >
+            {{ newsletterStatus() === 'sending' ? 'Envoi…' : "S'abonner" }}
+          </button>
         </div>
         @if (isInvalid(newsletterForm.controls.email)) {
           <p id="newsletter-email-error" class="error">Indiquez une adresse e-mail valide.</p>
         }
+        <p class="status" role="status">
+          @switch (newsletterStatus()) {
+            @case ('sent') {
+              <span>Merci ! Votre inscription est enregistrée.</span>
+            }
+            @case ('error') {
+              <span>L'inscription a échoué. Réessayez dans un instant.</span>
+            }
+          }
+        </p>
       </div>
     </form>
   </div>

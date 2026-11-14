@@ -59,8 +59,37 @@ textarea {
   color: var(--danger);
 }
 
-.submit {
-  align-self: flex-start;
+.send {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+}
+
+.status {
+  font-weight: 600;
+}
+
+.ok {
+  color: var(--green-text);
+}
+
+.ko {
+  color: var(--danger);
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.btn:disabled {
+  cursor: progress;
+  opacity: 0.7;
+  transform: none;
 }
 
 .newsletter {
