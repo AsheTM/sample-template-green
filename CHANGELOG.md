@@ -3,6 +3,37 @@
 All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.0.0] - 2026-11-14
+
+Visual redesign. The site changes from a series of slides into a product landing page.
+
+### Breaking
+
+- The page structure and section anchors changed: `#Main`, `#SmartGreen`, `#Products`, `#Promises`, `#WhoWeAre`, `#Newsletter` and `#About` are replaced by `#accueil`, `#kit`, `#fonctionnement`, `#promesses`, `#equipe` and `#contact`. Old links to a section now open the top of the page.
+- Images in `public/assets` were renamed or removed; direct links to the old image files no longer work.
+- The forms post to Netlify Forms. Form detection must be enabled once in the Netlify UI (see README).
+
+### Added
+
+- New design "Agritech clair": colour tokens, Plus Jakarta Sans (self-hosted), SVG icons (#33).
+- Dark mode that follows the system setting, with a remembered toggle in the header (#33).
+- New sections: hero with an app preview, how it works, the kit, promises, team and contact (#34).
+- Mobile navigation menu, skip link, and fade-in on scroll that respects reduced motion (#34).
+- Contact and newsletter forms are sent through Netlify Forms, with a spam honeypot and announced success or error messages (#35).
+- SVG favicon with the new logo (#36).
+
+### Changed
+
+- Page copy lives in typed data (`src/app/content/content.ts`) instead of templates (#34).
+- The team shows fictional names and roles, without personal phone numbers or e-mail addresses (#34).
+- Photos replaced with Unsplash photos, credited in the README (#36).
+- README rewritten for the new structure, design, forms and deployment (#37).
+
+### Removed
+
+- The ten slide components and the old header (#34).
+- Unused images and the PNG social icons; `public/assets` goes from 1.3 MB to 328 KB (#36).
+
 ## [1.1.1] - 2026-11-13
 
 ### Added
@@ -56,6 +87,7 @@ Technical upgrade of the site. Content and desktop design are unchanged.
 
 Initial version.
 
+[2.0.0]: https://github.com/AsheTM/sample-template-green/compare/v1.1.1...v2.0.0
 [1.1.1]: https://github.com/AsheTM/sample-template-green/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/AsheTM/sample-template-green/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/AsheTM/sample-template-green/releases/tag/v1.0.0
