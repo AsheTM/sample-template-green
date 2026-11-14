@@ -1,33 +1,49 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { Header } from './header/header';
-import { SlideOne } from './slide-one/slide-one';
-import { SlideTwo } from './slide-two/slide-two';
-import { SlideThree } from './slide-three/slide-three';
-import { SlideFour } from './slide-four/slide-four';
-import { SlideFive } from './slide-five/slide-five';
-import { SlideSix } from './slide-six/slide-six';
-import { SlideSeven } from './slide-seven/slide-seven';
-import { SlideEight } from './slide-eight/slide-eight';
-import { SlideNine } from './slide-nine/slide-nine';
-import { SlideTen } from './slide-ten/slide-ten';
+import { Contact } from './sections/contact/contact';
+import { Hero } from './sections/hero/hero';
+import { HowItWorks } from './sections/how-it-works/how-it-works';
+import { Kit } from './sections/kit/kit';
+import { Promises } from './sections/promises/promises';
+import { SiteFooter } from './sections/site-footer/site-footer';
+import { SiteHeader } from './sections/site-header/site-header';
+import { Story } from './sections/story/story';
+import { Team } from './sections/team/team';
 
 @Component({
   selector: 'app-root',
-  imports: [
-    Header,
-    SlideOne,
-    SlideTwo,
-    SlideThree,
-    SlideFour,
-    SlideFive,
-    SlideSix,
-    SlideSeven,
-    SlideEight,
-    SlideNine,
-    SlideTen,
-  ],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  imports: [SiteHeader, Hero, Story, HowItWorks, Kit, Promises, Team, Contact, SiteFooter],
+  template: `
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+    <app-site-header />
+    <main id="contenu">
+      <div id="accueil"></div>
+      <app-hero />
+      <app-story />
+      <app-how-it-works />
+      <app-kit />
+      <app-promises />
+      <app-team />
+      <app-contact />
+    </main>
+    <app-site-footer />
+  `,
+  styles: `
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      z-index: 20;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-weight: 700;
+    }
+    .skip-link:focus {
+      top: 12px;
+    }
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {}

@@ -7,7 +7,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Smart Green : un système d'arrosage intelligent et connecté qui ajuste l'irrigation à la météo et à votre terrain, pilotable depuis votre smartphone.">
-  <meta name="theme-color" content="#329f0b">
+  <meta name="theme-color" content="#f7f5ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1f16" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -16,9 +18,30 @@
   <meta property="og:description" content="Un système d'arrosage intelligent et connecté qui ajuste l'irrigation à la météo et à votre terrain.">
   <meta name="twitter:card" content="summary">
 
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    // Apply a remembered theme before the first paint (see src/app/shared/theme/theme.ts).
+    try {
+      var theme = localStorage.getItem('sg-theme');
+      if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+    } catch (e) {}
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
   <app-root></app-root>
+
+  <!-- Static copies of the Angular forms so Netlify Forms detects them at build time.
+       Field names must match src/app/sections/contact/contact.ts. -->
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name">
+    <input type="email" name="email">
+    <textarea name="message"></textarea>
+    <input type="text" name="bot-field">
+  </form>
+  <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="email" name="email">
+    <input type="text" name="bot-field">
+  </form>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<header class="header">
+  <div class="container bar">
+    <a href="#accueil" class="brand" aria-label="Smart Green, retour en haut">
+      <span class="logo"><app-icon name="leaf" [size]="22" /></span>
+      <span class="name">Smart Green</span>
+    </a>
+
+    <nav
+      id="main-nav"
+      class="nav"
+      [class.nav--open]="menuOpen()"
+      aria-label="Navigation principale"
+    >
+      @for (link of links; track link.href) {
+        <a [href]="link.href" (click)="menuOpen.set(false)">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="actions">
+      <app-theme-toggle />
+      <a href="#contact" class="btn btn--primary btn--small cta">Nous contacter</a>
+      <button
+        type="button"
+        class="burger"
+        aria-controls="main-nav"
+        [attr.aria-expanded]="menuOpen()"
+        [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
+        (click)="menuOpen.set(!menuOpen())"
+      >
+        <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
+      </button>
+    </div>
+  </div>
+</header>
