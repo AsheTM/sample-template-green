@@ -1,0 +1,95 @@
+<section id="contact" class="section" aria-label="Contact et newsletter">
+  <div class="container layout">
+    <form class="card panel" [formGroup]="contactForm" (ngSubmit)="submitContact()" novalidate>
+      <h2 class="heading">Contactez-nous</h2>
+      <p class="lead">Une question sur le kit ou un projet d'installation ? Écrivez-nous.</p>
+
+      <div class="field">
+        <label for="contact-name">Nom et prénom</label>
+        <input
+          id="contact-name"
+          type="text"
+          formControlName="name"
+          autocomplete="name"
+          [class.invalid]="isInvalid(contactForm.controls.name)"
+          [attr.aria-invalid]="isInvalid(contactForm.controls.name)"
+          [attr.aria-describedby]="
+            isInvalid(contactForm.controls.name) ? 'contact-name-error' : null
+          "
+        />
+        @if (isInvalid(contactForm.controls.name)) {
+          <p id="contact-name-error" class="error">Indiquez votre nom.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="contact-email">E-mail</label>
+        <input
+          id="contact-email"
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          [class.invalid]="isInvalid(contactForm.controls.email)"
+          [attr.aria-invalid]="isInvalid(contactForm.controls.email)"
+          [attr.aria-describedby]="
+            isInvalid(contactForm.controls.email) ? 'contact-email-error' : null
+          "
+        />
+        @if (isInvalid(contactForm.controls.email)) {
+          <p id="contact-email-error" class="error">Indiquez une adresse e-mail valide.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="contact-message">Message</label>
+        <textarea
+          id="contact-message"
+          rows="4"
+          formControlName="message"
+          [class.invalid]="isInvalid(contactForm.controls.message)"
+          [attr.aria-invalid]="isInvalid(contactForm.controls.message)"
+          [attr.aria-describedby]="
+            isInvalid(contactForm.controls.message) ? 'contact-message-error' : null
+          "
+        ></textarea>
+        @if (isInvalid(contactForm.controls.message)) {
+          <p id="contact-message-error" class="error">Écrivez votre message.</p>
+        }
+      </div>
+
+      <button type="submit" class="btn btn--primary submit">Envoyer le message</button>
+    </form>
+
+    <form
+      class="panel newsletter"
+      [formGroup]="newsletterForm"
+      (ngSubmit)="submitNewsletter()"
+      novalidate
+    >
+      <span class="mail-icon"><app-icon name="mail" [size]="26" [strokeWidth]="1.9" /></span>
+      <h2 class="heading">Newsletter</h2>
+      <p>Conseils d'arrosage et nouveautés Smart Green, directement dans votre boîte mail.</p>
+
+      <div class="field subscribe">
+        <label for="newsletter-email">Votre e-mail</label>
+        <div class="inline">
+          <input
+            id="newsletter-email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            [class.invalid]="isInvalid(newsletterForm.controls.email)"
+            [attr.aria-invalid]="isInvalid(newsletterForm.controls.email)"
+            [attr.aria-describedby]="
+              isInvalid(newsletterForm.controls.email) ? 'newsletter-email-error' : null
+            "
+          />
+          <button type="submit" class="btn subscribe-btn">S'abonner</button>
+        </div>
+        @if (isInvalid(newsletterForm.controls.email)) {
+          <p id="newsletter-email-error" class="error">Indiquez une adresse e-mail valide.</p>
+        }
+      </div>
+    </form>
+  </div>
+</section>
