@@ -7,7 +7,13 @@ import { Theme } from './theme';
   selector: 'app-theme-toggle',
   imports: [Icon],
   template: `
-    <button type="button" class="toggle" [attr.aria-label]="label()" [title]="label()" (click)="theme.toggle()">
+    <button
+      type="button"
+      class="toggle"
+      [attr.aria-label]="label()"
+      [title]="label()"
+      (click)="theme.toggle()"
+    >
       <app-icon [name]="theme.current() === 'dark' ? 'sun' : 'moon'" [size]="20" />
     </button>
   `,
