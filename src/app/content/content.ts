@@ -83,7 +83,7 @@ export const PRODUCTS: readonly Product[] = [
     text: 'Pour programmer, piloter et ajuster avec précision le besoin en eau de vos plantes.',
     icon: 'droplet',
     image: {
-      src: '/assets/product1.webp',
+      src: '/assets/smart-water-control.webp',
       alt: "Programmateur d'arrosage Smart Water Control",
       width: 315,
       height: 344,
@@ -94,7 +94,7 @@ export const PRODUCTS: readonly Product[] = [
     text: 'Un œil et un capteur météo dans votre espace cultivé, avec des données transmises en temps réel.',
     icon: 'sensor',
     image: {
-      src: '/assets/product2.webp',
+      src: '/assets/smart-sensor.webp',
       alt: 'Capteur Smart Sensor à planter dans le sol',
       width: 329,
       height: 390,

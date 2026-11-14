@@ -42,7 +42,7 @@ Before the first e2e run, install the browser: `npx playwright install chromium`
 ## Project structure
 
 ```
-public/assets/        Images (WebP) and icons, served at /assets
+public/assets/        Images (WebP), served at /assets
 src/index.html        Page shell and metadata
 src/styles.scss       Global styles
 src/app/app.*         Root component: header and the ten slides
@@ -87,6 +87,10 @@ The source code is released under the [MIT License](LICENSE).
 
 The images in `public/assets` are not covered by this license:
 
-- `me.webp` is © Haitham DAWOUD, all rights reserved.
-- The Facebook, Twitter and Instagram icons are trademarks of their respective owners.
-- All other images belong to their respective owners.
+| File | Source | Licence |
+| --- | --- | --- |
+| `watering-strawberries.webp` | [Benjamin White on Unsplash](https://unsplash.com/photos/1VJt-0nyDhg) | [Unsplash License](https://unsplash.com/license) |
+| `irrigated-field.webp` | [Bernd Dittrich on Unsplash](https://unsplash.com/photos/sktVzTJcGAs) | [Unsplash License](https://unsplash.com/license) |
+| `smart-water-control.webp`, `smart-sensor.webp` | Product visuals from the original school project | Belong to their respective owners |
+
+The font, Plus Jakarta Sans, is distributed under the SIL Open Font License through `@fontsource-variable/plus-jakarta-sans`.
